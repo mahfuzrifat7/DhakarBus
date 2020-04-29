@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ bus.name }} | Dhakar Bus{% endblock %}
+
+{% block body %}
+
+<h2>{{ bus.name }}</h2>
+
+<div class="bus-info text-center">
+    <p class="bus-route mb-1">{{ bus.start }} - {{ bus.stop }}</p>
+    <p class="bus-route-no">Route No: {% if bus.route_no %}{{ bus.route_no }}{% else %}N/A{% endif %}</p>
+    <p class="bus-route-no">Type: {% if bus.bus_type == 0 %}Sitting{% else %}Local{% endif %}</p>
+</div>
+
+<div class="route-container">
+    <h3>Route:</h3>
+
+    <ul class="full-route">
+        <!-- Other icons: place, map, directions -->
+        {% for stoppage in route %}
+            <li><i class="material-icons">near_me</i><span>{{ stoppage.name }}</span></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

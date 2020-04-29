@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Buses{% endblock %}
+
+{% block buses %}active{% endblock %}
+
+{% block body %}
+
+<h2>List of Buses</h2>
+
+{% for bus in buses %}
+<a href="/bus/{{ bus.pk }}" class="buslist-item text-center">
+    <p class="buslist-name">{{ bus.name }}</p>
+    <p class="buslist-route">({{ bus.start }} - {{ bus.stop }})</p>
+</a>
+{% endfor %}
+
+{% endblock %}

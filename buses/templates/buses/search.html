@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+
+{% block search %}active{% endblock %}
+
+{% block body %}
+
+<h2>Search</h2>
+
+<div class="search-form">
+    <form id="search-form" autocomplete="off" method="post">
+        {% csrf_token %}
+        
+        <div class="field-container">
+            {{ form.source }}
+            <i class="material-icons">place</i>
+            <ul id="source-results"></ul>
+        </div>
+        <div class="field-container">
+            {{ form.destination }}
+            <i class="material-icons">place</i>
+            <ul id="destination-results"></ul>
+        </div>
+        <button id="search-btn" type="submit">
+            <i class="material-icons">search</i>
+        </button>
+    </form>
+</div>
+
+<div id="search-results"></div>
+
+<div id="error"></div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'buses/search.js' %}"></script>
+{% endblock %}
